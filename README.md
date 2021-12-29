@@ -26,6 +26,7 @@ spring.jpa.properties.hibernate.generate_statistics=true
 BUT there are 2 points you have to take care of : 
 
 1 - using IDENTITY id strategy generation will silently disable batch inserts/updates because it needs to call specific sequence to generate id for each record
+you can use SEQUENCE instead
 
 2 - managing batching it takes time and resources so if you have like 10 or 20 record and you enable batching
 you will see that executing with batching is worst regarding to time comparing to without batching , so if you want to get benefit of batching
