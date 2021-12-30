@@ -6,7 +6,9 @@ How Hibernate execute statements without batching ?
 
 without hibernate batching every SQL statement will take a round trip to DB to be executed 
 
-when enabling the batching hibernate will group a certain number of INSERT/UPDATE statements and then go to DB in one round trip to execute them
+When enable batcing one important thing to mention here is the memory consumption. When we persist an entity, Hibernate stores it in the persistence context. For example, if we persist 100,000 entities in one transaction, we'll end up having 100,000 entity instances in memory, possibly causing an OutOfMemoryException , 
+
+so you can use flush() method to force entity persistence and then use clear
 
 to enable hibernate batching in spring boot you have to use this property in properties file :
 
